@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: portfolio-manager
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/portfolio}
+    username: ${DB_USERNAME:portfolio}
+    password: ${DB_PASSWORD:portfolio}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+    show-sql: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+# Credenciais da seguranca basica em memoria (Spring Security)
+app:
+  security:
+    username: ${APP_USER:admin}
+    password: ${APP_PASSWORD:admin123}
+  # URL base da API externa (mockada) de membros consumida via cliente HTTP
+  membros:
+    api:
+      base-url: ${MEMBROS_API_URL:http://localhost:8080/api/external/membros}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+  api-docs:
+    path: /v3/api-docs
